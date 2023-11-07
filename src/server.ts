@@ -1,5 +1,5 @@
 import "dotenv/config"
-import express from "express"
+import express, { Response, Request } from "express"
 import cors from "cors"
 import swaggerUi from "swagger-ui-express"
 
@@ -22,6 +22,11 @@ const CSS_URL =
 loaders.connect()
 
 // rotas
+
+app.get("/", (_req: Request, res: Response) => {
+  res.redirect("/api-docs")
+})
+
 app.use(
   "/api-docs",
   swaggerUi.serve,
